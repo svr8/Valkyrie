@@ -12,28 +12,33 @@
 
 <body>
     <div id="sidebar">
-        <div id="sidebar-quiz-details" class="Sidebar-block">
-            Quiz Details
-        </div>
-        <div id="sidebar-title" class="Sidebar-block">
-            Questions
-        </div>
+        <div id="sidebar-quiz-details" class="Sidebar-Block">Quiz Details</div>
+       
+        <div id="sidebar-title" class="Sidebar-Block">Questions</div>
+        <div id="sidebar-container-questions" class="Sidebar-Block"></div>
 
-        <div id="sidebar-container-questions" class="Sidebar-block">
-            <div id="sidebar-questionIndex" class="Sidebar-Option">Question A</div>
-            <div id="sidebar-questionIndex" class="Sidebar-Option">Question B</div>
-        </div>
-
-        <div id="sidebar-title" class="Sidebar-block">
-            Solutions
-        </div>
-        <div id="sidebar-container-questions" class="Sidebar-block">
+        <div id="sidebar-title" class="Sidebar-Block">Solutions</div>
+        <div id="sidebar-container-solutions" class="Sidebar-Block">
             <div id="sidebar-solutionIndex" class="Sidebar-Option">Test</div>
             <div id="sidebar-solutionIndex" class="Sidebar-Option">Solution A</div>
             <div id="sidebar-solutionIndex" class="Sidebar-Option">Solution B</div>
         </div>
-
-
+    </div>
+    <div id="content-wrap">
+        <div id="question-title">Title</div>
+        <div id="question-text">Text</div>
+        <div id="question-constraints">
+            <div id="constraints-title">Constraints</div>
+                <div class="constraints-item">
+                    <div class="constraints-lower_bound">1 </div>
+                    <div class="constraints-name">N</div>
+                    <div class="constraints-upper_bound"> 10^9 </div>
+                </div>
+                <div class="constraints-item">
+                    <div class="constraints-other">All characters of the string are in lowercase.</div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

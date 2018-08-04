@@ -4,19 +4,28 @@ var questions = {
         "title": "A",
         "text": "Question0",
         "code_template": "Template",
-        "time_limit": "1s"
+        "constraints": {
+            "var": {
+                "lower_bound": "1",
+                "name": "N",
+                "upper_bound": "10^9"
+            },
+            "others": [
+                'All characters of the string are lowercase.'
+            ]
+        }
     },
     "B": {
         "id": "1",
         "title": "B",
         "text": "Question1",
-        "code_template": "Template"
+        "code_template": "Template",
     },
     "C": {
         "id": "1",
         "title": "C",
         "text": "Question1",
-        "code_template": "Template"
+        "code_template": "Template",
     },
 
 };
