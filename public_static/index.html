@@ -1,0 +1,71 @@
+<html>
+<head>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style/common.css">
+    <link rel="stylesheet" href="style/signIn.css">
+
+    <!-- Scripts -->
+    <script src="thirdparty/jquery.min.js"></script>
+    <script src="script/signIn.js"></script>
+
+</head>
+
+<body>
+    <div id="signInContainer">
+        <div id="button-SignInWithGoogle">
+            Sign In With Google
+        </div>
+    </div>
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+<script>
+ 
+    //Initialize Firebase
+    var config = {
+    apiKey: "AIzaSyD1H8pGZ6hrj7SsB5_JS175gu6UHvAXNDU",
+    authDomain: "valkyrie-muj.firebaseapp.com",
+    databaseURL: "https://valkyrie-muj.firebaseio.com",
+    projectId: "valkyrie-muj",
+    storageBucket: "valkyrie-muj.appspot.com",
+    messagingSenderId: "256721948000"
+    };
+    firebase.initializeApp(config);
+
+    function onSignInWithGoogle() {
+        console.log('SignInWithGoogle Pressed');
+        
+        var provider = new firebase.auth.GoogleAuthProvider();
+
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            //console.log(user)
+            // ...
+            if(user) { 
+                
+                console.log('Sign In Successfull'); 
+                window.location.replace('./dashboard.html')
+        
+        
+        }
+            else { console.log('Sign In Failed'); }
+
+            }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(error);
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+        });
+    }
+
+</script>
+</html>

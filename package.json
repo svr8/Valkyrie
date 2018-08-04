@@ -1,0 +1,22 @@
+{
+  "name": "valkyrie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svr8/Valkyrie.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svr8/Valkyrie/issues"
+  },
+  "homepage": "https://github.com/svr8/Valkyrie#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
