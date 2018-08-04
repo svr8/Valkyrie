@@ -18,7 +18,7 @@
     background-color: blueviolet;
 }
 
-#question-title, #question-text, #question-constraints
+#question-title, #question-description, #question-constraints
 {
     position: relative;
     left: 0px;
@@ -27,7 +27,7 @@
     background-color: blanchedalmond;
 }
 
-#question-text, #question-constraints
+#question-description, #question-constraints
 {
     margin-top: 20px;
 }
