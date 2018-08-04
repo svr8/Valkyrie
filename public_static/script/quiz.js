@@ -15,19 +15,6 @@ var questions = {
             ]
         }
     },
-    "B": {
-        "id": "1",
-        "title": "B",
-        "text": "Question1",
-        "code_template": "Template",
-    },
-    "C": {
-        "id": "1",
-        "title": "C",
-        "text": "Question1",
-        "code_template": "Template",
-    },
-
 };
 
 

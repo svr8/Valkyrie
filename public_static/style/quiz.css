@@ -13,6 +13,26 @@
     position: relative;
     top:0px;
     left: 200px;
-    
     height: 100%;
+
+    background-color: blueviolet;
+}
+
+#question-title, #question-text, #question-constraints
+{
+    position: relative;
+    left: 0px;
+    display: block;
+
+    background-color: blanchedalmond;
+}
+
+#question-text, #question-constraints
+{
+    margin-top: 20px;
+}
+
+.constraints-lower_bound, .constraints-name, .constraints-upper_bound
+{
+    display: inline-block;
 }
