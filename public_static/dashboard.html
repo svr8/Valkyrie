@@ -8,7 +8,18 @@
 
     <!-- Scripts -->
     <script src="thirdparty/jquery.min.js"></script>
+    <script src="script/firebase.js"></script>
+    <script src="script/firebaseOps.js"></script>
     <script src="script/dashboard.js"></script>
+    <script> 
+            initializeFirebase();
+             firebase.auth().onAuthStateChanged((user)=>{
+
+                 if(user)
+                 {
+                     console.log(user.email);
+                 }
+             })</script>
 
 </head>
 
