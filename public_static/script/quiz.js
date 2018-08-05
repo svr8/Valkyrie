@@ -15,8 +15,9 @@ var questions = {
                 'All characters of the string are lowercase.'
             ]
         },
-        "sample_input": "SAMPLE INPUT",
-        "sample_output": "SAMPLE OUTPUT",
+       
+        "sample_input": "BALLE",
+        "sample_output": "SHAVA",
         "code_template": "Template",
         "input": {}
     },
@@ -42,15 +43,34 @@ $(document).ready(function(){
 //      "code_template": "XYZ"
 // }
 function loadQuestion(question) {
-    console.log(question.id);
+    console.log('Loading Question: '+question.id);
     $("#sidebar-container-questions").append(
         getQuestionTabHTML(question)
     );
 
     $('#sidebar-question-'+question.id).on('click', function() {
         console.log('Question Tab: '+ question.id+ ' CLICKED');
-        // selectQuestionTab(question.id);
+        selectQuestionTab(question);
     });
+}
+
+function renderQuestionTab(question, callback) {
+    
+}
+
+function selectQuestionTab(question) {
+    // Set background color of previously selected tab to DEFAULT
+    $('#sidebar-question-'+selectedQuestionID).css("background-color", "#36C7DA");
+
+    // Set background color of selected tab to SELECTED
+    $('#sidebar-question-'+question.id).css("background-color", "#63D5E4");
+    
+    // Hide code editor
+    $('#content-solution').hide();
+
+    displayQuestion(question);
+
+    $('#content-question').show();
 }
 
 function displayQuestion(question) {
@@ -65,30 +85,36 @@ function displayQuestion(question) {
     $('#question-description').html(question.description);
 
     //Set Constraints
-    var constraint;
+    var constraint, constraintsLength;
 
     //-Clear Constraints
     $('#question-constraints').html('');
-
+    
     //-Set variable constraints
     constraint = question.constraints.var;
-    for(var i=0; i<constraint.length; i++) 
+    constraintsLength = Object.keys(constraint).length;
+    for(var i=0; i<constraintsLength; i++) 
         $('#question-constraints').append(getVariableConstraintHTML(constraint[i]));
 
     //Set other constraints
     constraint = question.constraints.other;
-    for(var i=0; i<constraint.length; i++) 
+    constraintsLength = Object.keys(constraint).length;
+    for(var i=0; i<constraintsLength; i++) 
         $('#question-constraints').append(getOtherConstraintHTML(constraint[i]));
     
     //Set Sample Input
+    $("#question-sampleInput").html(question.sample_input);
+
     //Set Sample Output
+    $("#question-sampleOutput").html(question.sample_output);
 }
 
 function getVariableConstraintHTML(constraint) {
-    return '<div class="constraints-item>'+ 
+
+    return '<div class="constraints-item">'+ 
                 '<div class="constraints-lower_bound">'+constraint.lower_bound+'&lt;</div>'+
-                '<div class="constraints-name>'+constraint.name+'&lt;</div>'+
-                '<div class="constraints-upper_bound">'+constraints.upper_bound+'</div>'+
+                '<div class="constraints-name">'+constraint.name+'&lt;</div>'+
+                '<div class="constraints-upper_bound">'+constraint.upper_bound+'</div>'+
            '</div>';
 }
 
@@ -99,5 +125,5 @@ function getOtherConstraintHTML(constraint) {
 }
 
 function getQuestionTabHTML(question) {
-    return '<div id="sidebar-question-"'+ question.id+ ' class="Sidebar-Option">'+ question.title+ '</div>';
+    return '<div id="sidebar-question-'+ question.id+ '" class="Sidebar-Option">'+ question.title+ '</div>';
 }

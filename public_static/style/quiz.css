@@ -18,7 +18,7 @@
     background-color: blueviolet;
 }
 
-#question-title, #question-description, #question-constraints
+#question-title, #question-description, #question-constraints, #question-sampleInput-container, #question-sampleOutput-container
 {
     position: relative;
     left: 0px;

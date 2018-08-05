@@ -32,13 +32,13 @@
     vertical-align: middle;
     line-height: 20px;  
 
-    background-color: azure;
+    background-color: #36C7DA;
     
     transition: 0.18s;
 }
 
 .Sidebar-Option:hover
 {
-    background-color: aquamarine;
+    background-color: #63D5E4;
     cursor: pointer;
 }
