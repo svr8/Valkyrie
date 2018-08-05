@@ -1,3 +1,4 @@
+/* SIDEBAR ELEMENTS */
 #sidebar-quiz-details
 {
     height: 60px;
@@ -8,6 +9,8 @@
     margin-top: 30px;
     background-color: burlywood;
 }
+
+/* MAIN BODY ELEMENTS */
 #content-wrap
 {
     position: relative;
@@ -17,7 +20,35 @@
 
     background-color: blueviolet;
 }
+/* QUIZ START BUTTON */
+#content-startBtn
+{
+    position: absolute;
+    left: 45%;
+    top: 40%;
 
+    width: 150px;
+    height: 50px;
+
+    border-radius: 5px;
+    background-color: bisque;
+    transition: 0.1s;
+}
+#content-startBtn:hover
+{
+    cursor: pointer;
+    background-color: aliceblue;
+}
+
+#content-startBtn-text
+{
+    /* Align text centerally */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px; 
+}
+
+/* QUIZ QUESTION */
 #question-title, #question-description, #question-constraints, #question-sampleInput-container, #question-sampleOutput-container
 {
     position: relative;

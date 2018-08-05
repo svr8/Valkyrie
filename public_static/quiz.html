@@ -7,6 +7,7 @@
 
     <!-- Scripts -->
     <script src="thirdparty/jquery.min.js"></script>
+    <script src="script/common.js"></script>
     <script src="script/quiz.js"></script>
 </head>
 
@@ -25,32 +26,35 @@
         </div>
     </div>
     <div id="content-wrap">
+        <div id="content-startBtn">
+            <div id="content-startBtn-text">Start Quiz</div
+        ></div>
         <div id="content-question">
-            <div id="question-title">Title</div>
-            <div id="question-description">Text</div>
+            <div id="question-title"></div>
+            <div id="question-description"></div>
             <div id="question-constraints">
-                <div id="constraints-title">Constraints</div>
+                <div id="constraints-title"></div>
                     <div class="constraints-item">
-                        <div class="constraints-lower_bound">1</div>
-                        <div class="constraints-name">N</div>
-                        <div class="constraints-upper_bound"> 10^9 </div>
+                        <div class="constraints-lower_bound"></div>
+                        <div class="constraints-name"></div>
+                        <div class="constraints-upper_bound">  </div>
                     </div>
                     <div class="constraints-item">
-                        <div class="constraints-lower_bound">1 </div>
-                        <div class="constraints-name">N</div>
-                        <div class="constraints-upper_bound"> 10^9 </div>
+                        <div class="constraints-lower_bound"></div>
+                        <div class="constraints-name"></div>
+                        <div class="constraints-upper_bound">  </div>
                     </div>
                     <div class="constraints-item">
-                        <div class="constraints-other">All characters of the string are in lowercase.</div>
+                        <div class="constraints-other"></div>
                     </div>
             </div>
             <div id="question-sampleInput-container">
                 <div class="question-sample">SAMPLE INPUT</div>
-                <div id="question-sampleInput" class="question-sample-content">abc</div>
+                <div id="question-sampleInput" class="question-sample-content"></div>
             </div>
             <div id="question-sampleOutput-container">
                 <div class="question-sample">SAMPLE INPUT</div>
-                <div id="question-sampleOutput" class="question-sample-content">abc</div>
+                <div id="question-sampleOutput" class="question-sample-content"></div>
             </div>
         </div>
         <div id="content-solution">
