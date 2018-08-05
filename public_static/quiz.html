@@ -7,33 +7,60 @@
 
     <!-- Scripts -->
     <script src="thirdparty/jquery.min.js"></script>
+    <script src="script/common.js"></script>
     <script src="script/quiz.js"></script>
 </head>
 
 <body>
     <div id="sidebar">
-        <div id="sidebar-quiz-details" class="Sidebar-block">
-            Quiz Details
-        </div>
-        <div id="sidebar-title" class="Sidebar-block">
-            Questions
-        </div>
+        <div id="sidebar-quiz-details" class="Sidebar-Block">Quiz Details</div>
+       
+        <div id="sidebar-title" class="Sidebar-Block">Questions</div>
+        <div id="sidebar-container-questions" class="Sidebar-Block"></div>
 
-        <div id="sidebar-container-questions" class="Sidebar-block">
-            <div id="sidebar-questionIndex" class="Sidebar-Option">Question A</div>
-            <div id="sidebar-questionIndex" class="Sidebar-Option">Question B</div>
-        </div>
-
-        <div id="sidebar-title" class="Sidebar-block">
-            Solutions
-        </div>
-        <div id="sidebar-container-questions" class="Sidebar-block">
+        <div id="sidebar-title" class="Sidebar-Block">Solutions</div>
+        <div id="sidebar-container-solutions" class="Sidebar-Block">
             <div id="sidebar-solutionIndex" class="Sidebar-Option">Test</div>
             <div id="sidebar-solutionIndex" class="Sidebar-Option">Solution A</div>
             <div id="sidebar-solutionIndex" class="Sidebar-Option">Solution B</div>
         </div>
+        <div id="sidebar-logoutBtn">Logout</div>
+    </div>
+    <div id="content-wrap">
+        <div id="content-startBtn">
+            <div id="content-startBtn-text">Start Quiz</div
+        ></div>
+        <div id="content-question">
+            <div id="question-title"></div>
+            <div id="question-description"></div>
+            <div id="question-constraints">
+                <div id="constraints-title"></div>
+                    <div class="constraints-item">
+                        <div class="constraints-lower_bound"></div>
+                        <div class="constraints-name"></div>
+                        <div class="constraints-upper_bound">  </div>
+                    </div>
+                    <div class="constraints-item">
+                        <div class="constraints-lower_bound"></div>
+                        <div class="constraints-name"></div>
+                        <div class="constraints-upper_bound">  </div>
+                    </div>
+                    <div class="constraints-item">
+                        <div class="constraints-other"></div>
+                    </div>
+            </div>
+            <div id="question-sampleInput-container">
+                <div class="question-sample">SAMPLE INPUT</div>
+                <div id="question-sampleInput" class="question-sample-content"></div>
+            </div>
+            <div id="question-sampleOutput-container">
+                <div class="question-sample">SAMPLE INPUT</div>
+                <div id="question-sampleOutput" class="question-sample-content"></div>
+            </div>
+        </div>
+        <div id="content-solution">
 
-
+        </div>
     </div>
 </body>
 </html>
