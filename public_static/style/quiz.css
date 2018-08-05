@@ -10,6 +10,12 @@
     background-color: burlywood;
 }
 
+#sidebar-container-questions
+{
+    max-height: 100px;
+}
+
+
 /* MAIN BODY ELEMENTS */
 #content-wrap
 {

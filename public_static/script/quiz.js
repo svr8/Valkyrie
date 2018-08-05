@@ -40,7 +40,7 @@ var questions = {
         "sample_input": "balle",
         "sample_output": "shava",
         "code_template": "Template",
-    }
+    },
 };
 
 var selectedQuestionID = '';
@@ -54,7 +54,7 @@ $(document).ready(function(){
         startQuiz();
     });
 
-    //Reisize Body
+    //Reisize $( #content-wrap )
     $('#content-wrap').css('width', $(document).width() - $('#sidebar').width()-210);    
     $('#content-wrap').css('left', $('#sidebar').width());    
 
@@ -64,12 +64,20 @@ $(document).ready(function(){
 function startQuiz() {
     console.log('Quiz has Started');
 
+    //Hide start button
+    $('#content-startBtn').hide();
+
     //Load Questions
     var flag = true;
     for( var i in questions) {
         loadQuestion(questions[i]);
         if(flag) { selectQuestionTab(questions[i]); flag=false; }
     }
+
+    // Make question block scrollable if needed
+    var element = document.getElementById('sidebar-container-questions');
+    if(isElementOverflowY( element )) setElementScrollableY( element );
+    
 
     // Load Editors
     // for(var i=0;i<n;i++) {
