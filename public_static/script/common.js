@@ -1,4 +1,8 @@
 
+$(document).ready(function() {
+    
+});
+
 function setHoverColor(el, defaultColor, hoverColor) {
     $(el).css('background-color', defaultColor);
     $(el).on('mouseenter', function(){
@@ -8,6 +12,7 @@ function setHoverColor(el, defaultColor, hoverColor) {
         $(this).css('background-color', defaultColor);
     });
 }
+
 
 function isElementOverflowY(element) {
     return (element.offsetHeight < element.scrollHeight) ;
