@@ -126,9 +126,12 @@ function loadQuestion(question) {
 function selectQuestionTab(question) {
 
     //Toggle CSS of selected tabs
-    setHoverColor($('#sidebar-question-'+selectedQuestionID), '#36C7DA', '#63D5E4');
+    //Last selected tab
+    setHoverColor($('#sidebar-question-'+selectedQuestionID), 'transparent', '#545454');
+   
+    //Current selected Tab
     selectedQuestionID = question.id;
-    setHoverColor($('#sidebar-question-'+selectedQuestionID), '#63D5E4', '#63D5E4');
+    setHoverColor($('#sidebar-question-'+selectedQuestionID), '#545454', '#545454');
     
     // Toggle Question code editor
     $('#content-solution').hide();

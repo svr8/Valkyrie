@@ -17,6 +17,8 @@
 {
     width: 100%;
     height: 30px;
+
+    /* Align text centerally */
     text-align: center;
     vertical-align: middle;
     line-height: 30px; 
@@ -49,17 +51,6 @@
 
 /* MAIN BODY */
 
-/* Analytics */
-#container-analytics
-{
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 60%;
-
-    background-color: #383a3c;
-}
 #container-mainBody
 {
     position: absolute;
@@ -102,7 +93,7 @@
     
     background-color: #3E3D3D;
 
-    /* Align text centerally */
+    /* Align text centerally */    /* Align text centerally */
     text-align: center;
     vertical-align: middle;
     line-height: 30px; 
@@ -121,19 +112,20 @@
 
     background-color: #3E3D3D;
 }
-.QuizList-Item
+.QuizList-Item, .QuizList-Item-Disabled
 {
     position: relative;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 20px;
+
+    color: white;
     
-    background-color: brown;
     transition: 0.1s;   
 }
 .QuizList-Item:hover
 {
     cursor: pointer;
-    background-color: antiquewhite;
+    background-color: #6E6D6D;
 }

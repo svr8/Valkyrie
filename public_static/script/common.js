@@ -1,6 +1,8 @@
 
 $(document).ready(function() {
-    
+    $('#sidebar-logoutBtn').on('click', function() {
+        console.log('Button Pressed: Logout');
+    });
 });
 
 function setHoverColor(el, defaultColor, hoverColor) {

@@ -48,6 +48,10 @@
     
     transition: 0.16s;
 }
+.Sidebar-Option-Selected
+{
+    background-color: #545454;
+}
 
 .Sidebar-Option:hover
 {
@@ -80,6 +84,6 @@
 }
 #sidebar-logoutBtn:hover
 {
-    background-color: #545454;
+    background-color: #a31818;
     cursor: pointer;
 }
