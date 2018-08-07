@@ -15,11 +15,13 @@ var questions = {
                 'All characters of the string are lowercase.'
             ]
         },
-       
+        "input": "",
+        "output": "",
         "sample_input": "BALLE",
         "sample_output": "SHAVA",
         "code_template": "Template",
     },
+    
     "B": {    
         "id": "1",
         "title": "B",
@@ -36,11 +38,12 @@ var questions = {
                 'All characters of the string are lowercase.'
             ]
         },
-       
+        "input": "",
+        "output": "",
         "sample_input": "balle",
         "sample_output": "shava",
         "code_template": "Template",
-    },
+    },  
 };
 
 var selectedQuestionID = '';
@@ -102,7 +105,8 @@ function startQuiz() {
     //             'String description'
     //         ]
     //     },
-    // 
+    //    "input": "",
+    //    "output": "",
     //     "sample_input": "Text",
     //     "sample_output": "Text",
     //     "code_template": "Code Snippet",
