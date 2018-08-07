@@ -87,7 +87,7 @@ function getQuestion(question_id)
     return docRef.get();
 }
 
-function getOutput()
+
 
 module.exports={setQuizData, addQuestion, getQuestion};
 
