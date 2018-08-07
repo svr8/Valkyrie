@@ -1,27 +1,86 @@
+/* FONTS */
+@font-face {
+    font-family: Student-Detail;
+    src: url('../fonts/Helvetica-Regular.ttf');
+}
+
+/* SIDEBAR */
+
+/* Student Details */
 #sidebar-student-details
 {
     height: 60px;
-    background-color: yellowgreen;
+    color: white;
 }
 
-#container-quizList
+#student-details-name
+{
+    width: 100%;
+    height: 30px;
+
+    /* Align text centerally */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px; 
+
+    font-family: Student-Detail;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.student-detail
+{
+    width: 100%;
+    height: 30px;
+    margin-left: 8px;
+}
+
+.student-detail-key, .student-detail-value
+{
+    display: inline-block;
+    font-family: Student-Detail;
+    font-size: 15px;
+}
+
+/* Dashboard Options */
+#container-student-options
+{
+    top: 30px;
+}
+
+/* MAIN BODY */
+
+#container-mainBody
 {
     position: absolute;
     top: 0px;
     left: 200px;
+    width: 500px;
+    height: 100%;
+
+    background-color: #383a3c;
+}
+
+
+/* Quiz List */
+#container-quizList
+{
+    position: relative;
+    top: 0px;
+    left: 0px;
     width: 100%;
-    height: 300px;
-    /* background-color: black; */
+    /* height: 200px; */
+    /* box-shadow: 20px -8px 50px black; */
+
 }
 
 .QuizList {
     position: relative;
     float: left;
     width: 40%;
-    height: 150px;
 
-    background-color: burlywood;
-    margin: 10px;
+    margin: 5px;
 
 }
 .QuizList-Title
@@ -32,12 +91,17 @@
     width: 100%;
     height: 30px;
     
-    background-color: aqua;
+    background-color: #3E3D3D;
 
-    /* Align text centerally */
+    /* Align text centerally */    /* Align text centerally */
     text-align: center;
     vertical-align: middle;
     line-height: 30px; 
+
+    font-family: Student-Detail;
+    color: white;
+
+    z-index: 1;
 }
 .QuizList-ItemContainer
 {
@@ -45,23 +109,23 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 120px;
 
-    background-color: blueviolet;
+    background-color: #3E3D3D;
 }
-.QuizList-Item
+.QuizList-Item, .QuizList-Item-Disabled
 {
     position: relative;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 20px;
+
+    color: white;
     
-    background-color: brown;
     transition: 0.1s;   
 }
 .QuizList-Item:hover
 {
     cursor: pointer;
-    background-color: antiquewhite;
+    background-color: #6E6D6D;
 }

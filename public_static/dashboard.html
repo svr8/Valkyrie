@@ -27,31 +27,37 @@
 <body>
     <div id="sidebar">
         <div id="sidebar-student-details" class="Sidebar-Block">
-            Student Details
+            <div id="student-details-name">Hello Student_Name!</div>
+            <div class="student-detail">
+                <div class="student-detail-key">Registration No: </div>
+                <div class="student-detail-value">179301234</div>
+            </div>
         </div>
 
         <div id="container-student-options" class="Sidebar-Block">
-            <div id="sidebar-home" class="Sidebar-Option">HOME</div>
+            <div id="sidebar-home" class="Sidebar-Option Sidebar-Option-Selected">DASHBOARD</div>
             <div id="sidebar-settings" class="Sidebar-Option">SETTINGS</div>
         </div>
 
-        <div id="sidebar-logoutBtn">Logout</div>
+        <div id="sidebar-logoutBtn">LOG OUT</div>
     </div>
-
-    <div id="container-quizList">
-        <div class="QuizList" id="quizList-active">
-            <div class="QuizList-Title">ACTIVE</div>
-            <div class="QuizList-ItemContainer">
-                <div class="QuizList-Item"> Quiz Title </div>
+    <div id="container-mainBody">
+        <div id="container-quizList">
+            <div class="QuizList" id="quizList-active">
+                <div class="QuizList-Title">ACTIVE QUIZZES</div>
+                <div class="QuizList-ItemContainer">
+                    <div class="QuizList-Item"> Quiz Title </div>
+                </div>
+            </div>
+            <div class="QuizList" id="quizList-upcoming">
+                <div class="QuizList-Title">UPCOMING QUIZZES</div>
+                <div class="QuizList-ItemContainer">
+                    <div class="QuizList-Item-Disabled"> Quiz Title </div>
+                </div>
             </div>
         </div>
-        <div class="QuizList" id="quizList-upcoming">
-            <div class="QuizList-Title">UPCOMING</div>
-            <div class="QuizList-ItemContainer">
-                <div class="QuizList-Item"> Quiz Title </div>
-            </div>
-        </div>
     </div>
+   
 
 </body>
 </html>

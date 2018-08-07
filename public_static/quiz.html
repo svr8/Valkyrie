@@ -2,18 +2,26 @@
 <head>
     <!-- Styles -->
     <link rel="stylesheet" href="style/common.css">
-    <link rel="stylesheet" href="style/sidebar.css">
     <link rel="stylesheet" href="style/quiz.css">
+    <link rel="stylesheet" href="style/sidebar.css">
 
     <!-- Scripts -->
     <script src="thirdparty/jquery.min.js"></script>
     <script src="script/common.js"></script>
     <script src="script/quiz.js"></script>
+    <script src="script/firebase.js"></script>
+    <script src="script/firebaseOps.js"></script>
+
 </head>
 
 <body>
     <div id="sidebar">
-        <div id="sidebar-quiz-details" class="Sidebar-Block">Quiz Details</div>
+        <div id="sidebar-quiz-details" class="Sidebar-Block">
+            <div class="quiz-detail">
+                <div class="quiz-detail-key">Quiz </div>
+                <div class="quiz-detail-value">12</div>
+            </div>
+        </div>
        
         <div id="sidebar-title" class="Sidebar-Block">Questions</div>
         <div id="sidebar-container-questions" class="Sidebar-Block"></div>
@@ -24,7 +32,8 @@
             <div id="sidebar-solutionIndex" class="Sidebar-Option">Solution A</div>
             <div id="sidebar-solutionIndex" class="Sidebar-Option">Solution B</div>
         </div>
-        <div id="sidebar-logoutBtn">Logout</div>
+
+        <div id="sidebar-logoutBtn">LOG OUT</div>
     </div>
     <div id="content-wrap">
         <div id="content-startBtn">

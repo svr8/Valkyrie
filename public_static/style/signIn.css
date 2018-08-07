@@ -1,6 +1,7 @@
 body
 {
-    background-color: brown;
+    /* background-color: #B43C3C; */
+    background: #383a3c;  /* fallback for old browsers */
 }
 
 #signInContainer
@@ -20,9 +21,10 @@ body
 
 #button-SignInWithGoogle
 {
-    width: 200px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.9);
+    width: 290px;
+    height: 70px;
+    background-image: url('../images/btn_google_signin_light_normal_web@2x.png');
+    background-size: contain;
 
     position:absolute; /*it can be fixed too*/
     left:0; right:0;
@@ -48,6 +50,5 @@ body
 #button-SignInWithGoogle:hover
 {
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.5);
-
+    background-image: url('../images/btn_google_signin_light_pressed_web@2x.png');
 }
