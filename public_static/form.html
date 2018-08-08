@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Questions Input</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div><form action="/submit_quiz" method="post">
+        <h3>Submit quiz</h3> 
+    Year<input name="year">
+    Quiz Id<input name="quiz_id">
+    <input type="submit">
+    </form>
+
+    </div>
+
+    <div>
+    <h3>Submit Question</h3> 
+    <form action="/submit_question" method="post">
+    Question Text<textarea name="text"></textarea><br>
+    Question Id <input name="question_id"><br>
+    Quiz Id <input name="quiz_id"><br>
+    Title <input name="title"> <br>
+    Input Test Cases <textarea name="input"> </textarea><br>
+    Output Test Cases <textarea name="output"> </textarea><br>
+    Lower Bound<input name="lower_bound"> <br>
+    Variable names<input name="names"> <br>
+    Upper Bound<input name="upper_bound"> <br>
+    Optional<input name="optional"> <br>
+    Code Template<textarea name="code_template"> </textarea><br>
+    <input type="submit">
+
+    </div>
+
+    </form>
+</body>
+</html>
+<!-- 
+choose random questions -->
