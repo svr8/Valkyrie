@@ -22,6 +22,7 @@
     //     "code_template": "Code Snippet",
     // },
 
+
 var questions = {
     '0': {   
         "title": "A",
@@ -71,6 +72,10 @@ var selectedQuestionID = '';
 $(document).ready(function(){
 
     // FIREBASE: Load questions
+    var quizID=localStorage.getItem("currentQuiz");
+    console.log(quizID);
+
+
     //Hide quiz
     $('#content-question').hide();
     $('#content-solution').hide();
@@ -81,8 +86,7 @@ $(document).ready(function(){
     });
 
     //TEMP
-    // $('#content-startBtn').hide();
-    // $('#content-solution').show();
+    startQuiz();
 
     //Reisize $( #content-wrap )
     $('#content-wrap').css('width', $(document).width() - $('#sidebar').width()-210);    
@@ -100,21 +104,17 @@ function startQuiz() {
     //Load Questions, Solution
     var flag = true;
     for( var i in questions) {
+        //Question
         loadQuestion(questions[i], i);
         if(flag) { selectQuestionTab(questions[i]); flag=false; }
         
+        //Solution
         loadSolution(questions[i], i);
     }
 
     // Make question block scrollable if needed
     var element = document.getElementById('sidebar-container-questions');
     if(isElementOverflowY( element )) setElementScrollableY( element );
-    
-    // Load Solution SidebarTabs
-    // for(var i=0;i<n;i++) {
-    //     $("sidebar-solutionIndex").on('click', function(){ console.log('Solution Index Pressed'); });
-    // }
-    // Load Editors
 }
 
 // QUESTION UTILS

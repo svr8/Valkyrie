@@ -2,12 +2,9 @@ $(document).ready(function() {
     console.log('Ready');
 
     $('#button-SignInWithGoogle').on('click', function(){
-        console.log('clicked')
+        console.log('clicked');
         
-        onSignInWithGoogle()
+        onSignInWithGoogle();
     
     });
 });
-
-
-

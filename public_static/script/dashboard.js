@@ -17,24 +17,12 @@ var quiz_all = [
     //     "quiz_start_date": "2018-01-01T00:00:00+05:30",
     //     "quiz_end_date": "2018-01-01T00:30:00+05:30",
     // },
-    {
-        "questions": []
-    },
-    {
-        "questions": []
-    }
 ];
 
 var quiz_active = [];
 var quiz_upcoming = [];
 
 $(document).ready(function(){
-    // FIREBASE: Get Quiz List
-    for(var i=0;i<quiz_all.length;i++) {
-        quiz_active.push(quiz_all[i]);
-        loadQuizItem($('#quizList-active'), quiz_active[i]);
-    }
-
     /*
     // Convert Date String into Date Object
     for( var i in quiz_all) { 
@@ -77,16 +65,29 @@ $(document).ready(function(){
 
 });
 
-function loadQuizItem(parent, quiz) {
-    $(parent).append( getQuizListItemHTML(quiz) );
+function loadQuizLists() {
+    for(var i=0;i<quiz_all.length;i++) {
+        quiz_active.push(quiz_all[i]);
+        loadQuizItem($('#quizList-active'), quiz_active[i]);
+    }
+}
+
+function loadQuizItem(parent, quizID) {
+    $(parent).append( getQuizListItemHTML(quizID) );
+
 
     $('.QuizList-Item').last().on('click', function() {
-        //Redirect to quiz.html and Pass quiz.questions        
+       
+       //Store quizID for quiz.html
+       localStorage.setItem("currentQuiz", JSON.stringify(quizID));
+       
+       //Redirect to quiz.html and Pass quiz ID        
+       window.location.replace('quiz.html');
     });
 }
-function getQuizListItemHTML(quiz) {
+function getQuizListItemHTML(quizID) {
     return '<div class="QuizList-ItemContainer">' +
-              '<div class="QuizList-Item"> Quiz </div>'+
+              '<div class="QuizList-Item"> Quiz '+quizID+' </div>'+
             '</div>';
 }
 
