@@ -9,6 +9,7 @@
     <script src="thirdparty/jquery.min.js"></script>
     <script src="script/common.js"></script>
     <script src="script/quiz.js"></script>
+   
     <script src="script/firebase.js"></script>
     <script src="script/firebaseOps.js"></script>
 
@@ -28,17 +29,14 @@
 
         <div id="sidebar-title" class="Sidebar-Block">Solutions</div>
         <div id="sidebar-container-solutions" class="Sidebar-Block">
-            <div id="sidebar-solutionIndex" class="Sidebar-Option">Test</div>
-            <div id="sidebar-solutionIndex" class="Sidebar-Option">Solution A</div>
-            <div id="sidebar-solutionIndex" class="Sidebar-Option">Solution B</div>
         </div>
 
         <div id="sidebar-logoutBtn">LOG OUT</div>
     </div>
     <div id="content-wrap">
         <div id="content-startBtn">
-            <div id="content-startBtn-text">Start Quiz</div
-        ></div>
+            <div id="content-startBtn-text">Start Quiz</div>
+        </div>
         <div id="content-question">
             <div id="question-title"></div>
             <div id="question-description"></div>
@@ -68,8 +66,65 @@
             </div>
         </div>
         <div id="content-solution">
-
         </div>
     </div>
+
+    <!-- load ace -->
+    <script src="thirdparty/ace-builds/src-min-noconflict/ace.js"></script>
+    <!-- load ace language tools -->
+    <script src="thirdparty/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+    <!-- load ace modelist extension -->
+    <script src="thirdparty/ace-builds/src-min-noconflict/ext-modelist.js"></script>
+    <script>
+        // trigger extension
+        ace.require("ace/ext/language_tools");
+        var editor = {};
+        function loadEditor(id, template) {
+                $('#content-solution').append(
+                    '<div class="content-editor" id="editor-'+id+'"></div>'
+                );
+                var editor_cur = ace.edit("editor-"+id);
+                var modelist = ace.require("ace/ext/modelist");
+                
+                editor_cur.session.setMode("ace/mode/java");
+                editor_cur.setTheme("ace/theme/monokai");
+                editor_cur.resize(true);
+
+                // enable autocompletion and snippets
+                editor_cur.setOptions({
+                    enableBasicAutocompletion: true,
+                    enableSnippets: true,
+                    enableLiveAutocompletion: true,
+                    autoScrollEditorIntoView: true,
+                    showPrintMargin: false,
+                    fontSize: '15px'
+                });
+                editor_cur.$blockScrolling = Infinity;
+                // editor.getSession().on('change', function() {
+                //     if(curFile!=null) 
+                //         setFileSaveStatus(curFile, false);
+                // });
+                $('#editor-'+id).hide();
+                editor[id] = editor_cur;
+                
+                setData(editor[id], template);
+        }
+        function getData(editor) {
+            return editor.getSession().getValue();
+        }
+        function setData(editor, data) {
+            // editor.session.setMode(mode);
+            editor.setValue(data, 1);
+        }
+        // function setLanguage(language) {
+        //     editor.session.setMode("ace/mode/"+language);
+        // }
+        function focusOnEditor(editor) {
+            editor.focus();
+            editor.gotoLine(0);
+        }
+        
+    </script>
+
 </body>
 </html>

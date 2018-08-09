@@ -1,93 +1,3 @@
-var questions = {
-    "A": {    
-        "id": "0",
-        "title": "A",
-        "description": "Question0",
-        "constraints": {
-            "var": {
-                "0": {
-                    "lower_bound": "1",
-                    "name": "N",
-                    "upper_bound": "10^9"
-                }
-            },
-            "other": [
-                'All characters of the string are lowercase.'
-            ]
-        },
-        "input": "",
-        "output": "",
-        "sample_input": "BALLE",
-        "sample_output": "SHAVA",
-        "code_template": "Template",
-    },
-    
-    "B": {    
-        "id": "1",
-        "title": "B",
-        "description": "Question1",
-        "constraints": {
-            "var": {
-                "0": {
-                    "lower_bound": "1",
-                    "name": "N",
-                    "upper_bound": "10^9"
-                }
-            },
-            "other": [
-                'All characters of the string are lowercase.'
-            ]
-        },
-        "input": "",
-        "output": "",
-        "sample_input": "balle",
-        "sample_output": "shava",
-        "code_template": "Template",
-    },  
-};
-
-var selectedQuestionID = '';
-
-$(document).ready(function(){
-    //Hide quiz
-    $('#content-question').hide();
-    $('#content-solution').hide();
-
-    $('#content-startBtn').on('click', function() {
-        startQuiz();
-    });
-
-    //Reisize $( #content-wrap )
-    $('#content-wrap').css('width', $(document).width() - $('#sidebar').width()-210);    
-    $('#content-wrap').css('left', $('#sidebar').width());    
-
-   
-});
-
-function startQuiz() {
-    console.log('Quiz has Started');
-
-    //Hide start button
-    $('#content-startBtn').hide();
-
-    //Load Questions
-    var flag = true;
-    for( var i in questions) {
-        loadQuestion(questions[i]);
-        if(flag) { selectQuestionTab(questions[i]); flag=false; }
-    }
-
-    // Make question block scrollable if needed
-    var element = document.getElementById('sidebar-container-questions');
-    if(isElementOverflowY( element )) setElementScrollableY( element );
-    
-
-    // Load Editors
-    // for(var i=0;i<n;i++) {
-    //     $("sidebar-solutionIndex").on('click', function(){ console.log('Solution Index Pressed'); });
-    // }
-}
-
 // question is a JSON Object with following structure:
     //  {    
     //     "id": "someQuestionID",
@@ -112,32 +22,130 @@ function startQuiz() {
     //     "code_template": "Code Snippet",
     // },
 
-function loadQuestion(question) {
-    console.log('Loading Question: '+question.id);
+var questions = {
+    '0': {   
+        "title": "A",
+        "text": "Question A",
+        "constraints": {
+            "var": [
+                {
+                    "lower_bound": "1",
+                    "name": "N",
+                    "upper_bound": "10^9"
+                }
+            ],
+            "other": [
+                'All characters of the string are lowercase.'
+            ]
+        },
+        "input": "",
+        "output": "",
+        // "sample_input": "BALLE",
+        // "sample_output": "SHAVA",
+        "code_template": "Template 0",
+    },
+    "1": {   
+        "title": "B",
+        "text": "Question B",
+        "constraints": {
+            "var": [
+                {
+                    "lower_bound": "1",
+                    "name": "N",
+                    "upper_bound": "10^9"
+                }
+            ],
+            "other": [
+                'All characters of the string are lowercase.'
+            ]
+        },
+        "input": "",
+        "output": "",
+        // "sample_input": "BALLE",
+        // "sample_output": "SHAVA",
+        "code_template": "Template 1",
+    },
+};
+var selectedQuestionID = '';
+
+$(document).ready(function(){
+
+    // FIREBASE: Load questions
+    //Hide quiz
+    $('#content-question').hide();
+    $('#content-solution').hide();
+
+    //Start Quiz Button Event Listener
+    $('#content-startBtn').on('click', function() {
+        startQuiz();
+    });
+
+    //TEMP
+    // $('#content-startBtn').hide();
+    // $('#content-solution').show();
+
+    //Reisize $( #content-wrap )
+    $('#content-wrap').css('width', $(document).width() - $('#sidebar').width()-210);    
+    $('#content-wrap').css('left', $('#sidebar').width());    
+
+   
+});
+
+function startQuiz() {
+    console.log('Quiz has Started');
+
+    //Hide start button
+    $('#content-startBtn').hide();
+
+    //Load Questions, Solution
+    var flag = true;
+    for( var i in questions) {
+        loadQuestion(questions[i], i);
+        if(flag) { selectQuestionTab(questions[i]); flag=false; }
+        
+        loadSolution(questions[i], i);
+    }
+
+    // Make question block scrollable if needed
+    var element = document.getElementById('sidebar-container-questions');
+    if(isElementOverflowY( element )) setElementScrollableY( element );
     
-    //Load HTML Structure
+    // Load Solution SidebarTabs
+    // for(var i=0;i<n;i++) {
+    //     $("sidebar-solutionIndex").on('click', function(){ console.log('Solution Index Pressed'); });
+    // }
+    // Load Editors
+}
+
+// QUESTION UTILS
+
+function loadQuestion(question, id) {
+    console.log('Loading Question: '+id);
+    
+    //Load Sidebar Tab
     $("#sidebar-container-questions").append(
-        getQuestionTabHTML(question)
+        getQuestionTabHTML(question, id)
     );
 
     //Add onClick event listener
-    $('#sidebar-question-'+question.id).on('click', function() {
-        console.log('Question Tab: '+ question.id+ ' CLICKED');
-        selectQuestionTab(question);
+    $('#sidebar-question-'+id).on('click', function() {
+        console.log('Question Tab: '+ id+ ' CLICKED');
+        selectQuestionTab(question, id);
     });
 }
 
-function selectQuestionTab(question) {
-
+function selectQuestionTab(question, id) {
+    
     //Toggle CSS of selected tabs
     //Last selected tab
     setHoverColor($('#sidebar-question-'+selectedQuestionID), 'transparent', '#545454');
-   
+    setHoverColor($('#sidebar-solution-'+selectedQuestionID), 'transparent', '#545454');
+    
     //Current selected Tab
-    selectedQuestionID = question.id;
+    selectedQuestionID = id;
     setHoverColor($('#sidebar-question-'+selectedQuestionID), '#545454', '#545454');
     
-    // Toggle Question code editor
+    // Toggle Question, code editor
     $('#content-solution').hide();
     $('#content-question').show();
 
@@ -158,7 +166,7 @@ function displayQuestion(question) {
     $('#question-title').html(question.title);
 
     //Set Description
-    $('#question-description').html(question.description);
+    $('#question-description').html(question.text);
 
     //Set Constraints
     var constraint, constraintsLength;
@@ -200,6 +208,59 @@ function getOtherConstraintHTML(constraint) {
            '</div>';
 }
 
-function getQuestionTabHTML(question) {
-    return '<div id="sidebar-question-'+ question.id+ '" class="Sidebar-Option">'+ question.title+ '</div>';
+function getQuestionTabHTML(question, id) {
+    return '<div id="sidebar-question-'+ id+ '" class="Sidebar-Option">'+ question.title+ '</div>';
+}
+
+// SOLUTION UTILS
+
+function loadSolution(question , id) {
+    console.log('Loading Solution: '+id);
+    
+    //Load Sidebar Tab
+    $("#sidebar-container-solutions").append(
+        getSolutionTabHTML(question, id)
+    );
+
+    //Load Editor
+    loadEditor(id, question.code_template);
+
+    //Add onClick Event listener
+    $('#sidebar-solution-'+id).on('click', function() {
+        console.log('Solution Tab: '+ id+ ' CLICKED');
+        selectSolutionTab(id);
+    });
+
+}
+
+function selectSolutionTab(id) {
+
+    //Toggle CSS of selected tabs
+    //Last selected tab
+    setHoverColor($('#sidebar-question-'+selectedQuestionID), 'transparent', '#545454');
+    setHoverColor($('#sidebar-solution-'+selectedQuestionID), 'transparent', '#545454');
+
+    
+    //Hide previously selected editor
+    $('#editor-'+selectedQuestionID).hide();
+
+    //Current Selected Tab
+    selectedQuestionID = id;
+    setHoverColor($('#sidebar-solution-'+selectedQuestionID), '#545454', '#545454');
+
+    // Toggle Question, code editor
+    $('#content-solution').show();
+    $('#content-question').hide();
+
+
+    //Display Question Details in $( #content-solution )
+    displaySolution(selectedQuestionID);
+}
+
+function displaySolution(id) {
+    $('#editor-'+id).show();
+}
+
+function getSolutionTabHTML(question, id) {
+    return '<div id="sidebar-solution-'+ id+ '" class="Sidebar-Option">'+ question.title+ '</div>';
 }
