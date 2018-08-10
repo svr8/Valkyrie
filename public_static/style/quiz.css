@@ -115,13 +115,49 @@
     margin-top: 1px;
 }
 
-#inputPane, #outputPanel
+.IOPanel
 {
     position: relative;
     top:0px;
     left:0px;
+
     width: 50%;
     height: 30%;
 
+    display: inline-block;
+
     background-color: red;
+}
+
+.IOPanel-Title
+{
+    position: relative;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 25px;
+
+    /* Align text centerally */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 25px;
+
+    background-color: blue;
+}
+
+.IOPanel-Editor
+{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+
+    display: block;
+}
+
+#submitCodeBtn
+{
+    position: relative;
+    top: 0px;
+    left: 0px;
 }

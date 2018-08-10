@@ -104,9 +104,11 @@ app.post('/run', (req, res)=>{
     runObject=req.body;
     userId=runObject.id;
     source=runObject.source;
+    console.log(runObject.question_id);
     controller.getQuestion(runObject.question_id).then((dataobj)=>{
 
         //add error checking
+        
         question=dataobj.data();
         input=question.input;
         //getInput();

@@ -75,9 +75,7 @@ function loadQuizLists() {
 function loadQuizItem(parent, quizID) {
     $(parent).append( getQuizListItemHTML(quizID) );
 
-
     $('.QuizList-Item').last().on('click', function() {
-       
        //Store quizID for quiz.html
        localStorage.setItem("currentQuiz", JSON.stringify(quizID));
        

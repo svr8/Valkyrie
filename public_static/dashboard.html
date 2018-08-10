@@ -30,10 +30,9 @@
                         // doc.data() is never undefined for query doc snapshots
                         var quizList = doc.data().quizzes;
                         for(var i in quizList) quiz_all.push(quizList[i]);
-                        resolve();
                     });
-                })
-                
+                    resolve();
+                });
             }).then(function() {
                 loadQuizLists();
             });
