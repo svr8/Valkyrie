@@ -7,11 +7,65 @@
 
     <!-- Scripts -->
     <script src="thirdparty/jquery.min.js"></script>
+    <script src="../controller.js"></script>
+    <script src="script/firebase.js"></script>
+    <script src="script/firebaseOps.js"></script>
+
     <script src="script/common.js"></script>
     <script src="script/quiz.js"></script>
    
-    <script src="script/firebase.js"></script>
-    <script src="script/firebaseOps.js"></script>
+    <script>
+        initializeFirebase();
+        firebase.auth().onAuthStateChanged((user)=>{
+            if(user)
+            {
+                console.log(user.email);
+                userID = user.uid;
+            }
+        });
+
+       // Initialize Cloud Firestore through Firebase
+       var db = firebase.firestore();
+       var isQuizFound = false;
+       db.collection("quizzes").get().then(function(querySnapshot) {
+                return new Promise((resolve, reject)=>{
+                    querySnapshot.forEach(function(doc) {
+                        // doc.data() is never undefined for query doc snapshots
+                        console.log('>'+doc.id+" "+quizID);
+                        if(doc.id == quizID) {
+                            isQuizFound = true;
+                            var list = doc.data().questions;
+                            for(var i=0;i<list.length;i++) questionID_list.push(list[i]);
+                            // resolve();
+                        }
+                    });
+                    resolve();
+                });
+            }).then(function() {
+                if(isQuizFound) {
+                    downloadQuestions();
+                }
+                else {
+                    console.log('QUIZ NOT FOUND');
+                }
+        });
+
+        function downloadQuestions() {
+            db.collection("questions").get().then(function(querySnapshot) {
+                return new Promise((resolve, reject)=>{
+                    querySnapshot.forEach(function(doc) {
+                        // doc.data() is never undefined for query doc snapshots
+                        if(questionID_list.indexOf(doc.id)!=-1)
+                            questions[doc.id] = doc.data();
+                    });
+                    resolve();
+                });
+            }).then(function() {
+                console.log(questions);
+                $('#content-startBtn').show();
+            });
+        }
+    </script>
 
 </head>
 
@@ -65,10 +119,22 @@
                 <div id="question-sampleOutput" class="question-sample-content"></div>
             </div>
         </div>
-        <div id="content-solution">
+        <div id="content-solution-wrap">
+            <div id="content-solution"></div>
+            
+
+            <div id="console-input" class="IOPanel">
+                <div class="IOPanel-Title"> INPUT </div>
+                <textarea id="io-inputPanel" class="IOPanel-Editor"> Test Input</textarea>
+            <button id="submitCodeBtn" onclick="submitCode()">SUBMIT</button>
+
+            </div>
+            <div id="console-output" class="IOPanel">
+                <div class="IOPanel-Title"> Output </div>
+                <textarea id="io-outputPanel" class="IOPanel-Editor"> Test Output</textarea>
+            </div>
         </div>
-        <div id="content-inputPanel"></div>
-        <div id="content-outputPanel"></div>
+        
 
     </div>
 

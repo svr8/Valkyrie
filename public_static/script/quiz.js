@@ -24,75 +24,36 @@
 
 
 var questions = {
-    '0': {   
-        "title": "A",
-        "text": "Question A",
-        "constraints": {
-            "var": [
-                {
-                    "lower_bound": "1",
-                    "name": "N",
-                    "upper_bound": "10^9"
-                }
-            ],
-            "other": [
-                'All characters of the string are lowercase.'
-            ]
-        },
-        "input": "",
-        "output": "",
-        // "sample_input": "BALLE",
-        // "sample_output": "SHAVA",
-        "code_template": "Template 0",
-    },
-    "1": {   
-        "title": "B",
-        "text": "Question B",
-        "constraints": {
-            "var": [
-                {
-                    "lower_bound": "1",
-                    "name": "N",
-                    "upper_bound": "10^9"
-                }
-            ],
-            "other": [
-                'All characters of the string are lowercase.'
-            ]
-        },
-        "input": "",
-        "output": "",
-        // "sample_input": "BALLE",
-        // "sample_output": "SHAVA",
-        "code_template": "Template 1",
-    },
+
 };
 var selectedQuestionID = '';
-
+var quizID = '';
+var questionID_list = [];
+var userID = '';
 $(document).ready(function(){
 
     // FIREBASE: Load questions
-    var quizID=localStorage.getItem("currentQuiz");
-    console.log(quizID);
+    quizID=JSON.parse(localStorage.getItem("currentQuiz"));
 
 
     //Hide quiz
     $('#content-question').hide();
-    $('#content-solution').hide();
+    $('#content-solution-wrap').hide();
 
     //Start Quiz Button Event Listener
     $('#content-startBtn').on('click', function() {
         startQuiz();
     });
 
-    //TEMP
-    startQuiz();
+    $('#content-startBtn').hide();
 
-    //Reisize $( #content-wrap )
+    //Resize $( #content-wrap )
     $('#content-wrap').css('width', $(document).width() - $('#sidebar').width()-210);    
-    $('#content-wrap').css('left', $('#sidebar').width());    
-
-   
+    $('#content-wrap').css('left', $('#sidebar').width());  
+    
+    //Resize $( .IOPanel ), $('.IOPanel-Editor)
+    $('.IOPanel').css('width', $('#content-wrap').width() / 2 - 3);
+    $('.IOPanel-Editor').css('height', $('IOPanel').height() - $('.IOPanel-Title').height());
 });
 
 function startQuiz() {
@@ -146,7 +107,7 @@ function selectQuestionTab(question, id) {
     setHoverColor($('#sidebar-question-'+selectedQuestionID), '#545454', '#545454');
     
     // Toggle Question, code editor
-    $('#content-solution').hide();
+    $('#content-solution-wrap').hide();
     $('#content-question').show();
 
     //Display Question Details in $( #content-question )
@@ -157,7 +118,7 @@ function selectQuestionTab(question, id) {
 function displayQuestion(question) {
 
     //If previously selected tab was a SOLUTION TAB
-    $('#content-solution').hide();
+    $('#content-solution-wrap').hide();
 
     //Show question layout
     $('#content-question').show();
@@ -249,11 +210,11 @@ function selectSolutionTab(id) {
     setHoverColor($('#sidebar-solution-'+selectedQuestionID), '#545454', '#545454');
 
     // Toggle Question, code editor
-    $('#content-solution').show();
+    $('#content-solution-wrap').show();
     $('#content-question').hide();
 
 
-    //Display Question Details in $( #content-solution )
+    //Display Question Details in $( #content-solution-wrap )
     displaySolution(selectedQuestionID);
 }
 
@@ -263,4 +224,20 @@ function displaySolution(id) {
 
 function getSolutionTabHTML(question, id) {
     return '<div id="sidebar-solution-'+ id+ '" class="Sidebar-Option">'+ question.title+ '</div>';
+}
+
+
+function submitCode() {
+    console.log('Submitting Code..' + selectedQuestionID);
+    
+   // console.log(firebase.auth().currentUser)
+    
+    $.post('/run', {
+       
+        id: userID,
+        question_id: selectedQuestionID,
+        source: getData(editor[selectedQuestionID]) ,
+        }, (data)=>{
+            $("#io-outputPanel").val(data);
+      });
 }
